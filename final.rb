@@ -25,26 +25,15 @@ define :notes do |n1,n2,n3,n4|
   play n3, sustain: 7, amp: 0.75
 end
 
-define :tight do |n1,n2,n3,n4,n5,n6,n7,n8,n9|
-  play n1
+define :core4 do |some1,some2,some3|
+  play some1
   sleep 0.23
-  play n2
+  play some2
   sleep 0.23
-  play n3
-  sleep 0.23
-  play n4
-  sleep 0.23
-  play n5
-  sleep 0.23
-  play n6
-  sleep 0.23
-  play n7
-  sleep 0.23
-  play n8
-  sleep 0.23
-  play n9
+  play some3
   sleep 0.23
 end
+
 
 define :melody do
   play :Cs3
@@ -149,9 +138,9 @@ n = [:C5, :Ab4, :F4]
 n2 = [:G4,:Eb4, :Bb4]
 n3 = [:Ab4,:F4, :Db4]
 a=0
-sample intro, amp: 2
-sleep 50
-live_loop :low do
+#sample intro, amp: 2
+#sleep 50
+=begin live_loop :low do
   4.times do
     play n[a], sustain: 3
     a=a+1
@@ -322,14 +311,14 @@ sleep begin_sleep [y]
 y=y+1
 play beginning [x], sustain: 2
 sleep begin_sleep [y]
-x=1.89
+x=1.9
 live_loop :hold do
   play notes :Fs3,:As3,:Cs4,:F4
-  sleep x
+  sleep x+0.05
   play notes :Fs3,:A3,:C4,:F4
   sleep x
   play notes :F3,:Gs3,:C4,:Ds4
-  sleep x
+  sleep x+0.05
   play notes :Cs3,:G3,:As3,:Cs4
   sleep x/2
   play :Ds4,sustain: 7, amp: 0.75
@@ -350,6 +339,8 @@ live_loop :hold do
   sleep x
   stop
 end
+=end
+use_bpm 62
 live_loop :high do
   play :As4
   sleep 0.23
@@ -358,24 +349,9 @@ live_loop :high do
   core
   core2
   core3
-  play :F5
-  sleep 0.23
-  play :As4
-  sleep 0.23
-  play :Ds5
-  sleep 0.23
-  play :As4
-  sleep 0.23
-  play :Cs5
-  sleep 0.23
-  play :As4
-  sleep 0.23
-  play :Cs5
-  sleep 0.23
-  play :As4
-  sleep 0.23
-  play :F5
-  sleep 0.23
+  play core4 :F5, :As4, :Ds5
+  play core4 :As4, :Cs5, :As4
+  play core4 :Cs5, :As4, :F5
   core
   core2
   core3
