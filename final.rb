@@ -138,9 +138,9 @@ n = [:C5, :Ab4, :F4]
 n2 = [:G4,:Eb4, :Bb4]
 n3 = [:Ab4,:F4, :Db4]
 a=0
-#sample intro, amp: 2
-#sleep 50
-=begin live_loop :low do
+sample intro, amp: 2
+sleep 50
+live_loop :low do
   4.times do
     play n[a], sustain: 3
     a=a+1
@@ -339,7 +339,6 @@ live_loop :hold do
   sleep x
   stop
 end
-=end
 use_bpm 62
 live_loop :high do
   play :As4
